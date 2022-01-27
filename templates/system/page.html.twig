@@ -1,0 +1,24 @@
+<div class="main-container">
+
+  {{ page.header }}
+
+  <section class="featured" id="featured" role="complementary">
+     {{ page.featured_top }}
+  </section>
+
+  <section class="main" id="main">
+     <main aria-label="Site main content" class="content" id="content" role="main">
+       {{ page.content }}
+     </main>
+     <aside class="right--sidebar" id="sidebar" role="complementary">
+       {{ page.right_sidebar }}
+     </aside>
+  </section>
+
+  <footer aria-label="Site footer" class="footer" id="footer" role="contentinfo">
+     {% include directory ~ '/templates/parts/svg-border.html.twig' %}
+     <div class="footer--top">
+       {{ page.footer }}
+     </div>
+  </footer>
+</div>
