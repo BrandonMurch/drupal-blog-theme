@@ -124,7 +124,6 @@ body {
 form.searchform {
   position: absolute;
   right: 0;
-  top: 0;
   transition: width 0.5s ease-in-out;
   border-radius: 20px;
   overflow: hidden;
@@ -484,6 +483,8 @@ header {
   background-image: linear-gradient(to bottom right, var(--accent1) -10%, var(--accent2) 100%);
   transition: all 1s ease-in-out;
   z-index: 1;
+  min-height: 50px;
+  display: flex;
 }
 
 header .svg-border {
