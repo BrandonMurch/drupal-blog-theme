@@ -1,0 +1,27 @@
+header
+  position: relative
+  margin-bottom: 7vw
+  padding: 30px 20px
+  padding-bottom: 50px
+  background-image: linear-gradient(to bottom right, var(--accent1) -10%, var(--accent2) 100%)
+  transition: all 1s ease-in-out
+  z-index: 1
+
+header .svg-border
+  fill: $background-color
+  position: absolute
+  bottom: 0
+  transform: scaleX(-1)
+  left: -20px
+
+  // Account for padding
+  width: calc(100% + 20px)
+
+  @media (min-width: 600px)
+    transform: scale(-1, 0.6) translateY(36%)
+
+  @media (min-width: 1200px)
+    transform: scale(-1, 0.4) translateY(78%)
+
+  @media (min-width: 1800px)
+    transform: scale(-1, 0.2) translateY(200%)

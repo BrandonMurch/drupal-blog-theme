@@ -1,0 +1,74 @@
+.card
+  background-color: $background-color
+  margin: 1rem auto
+  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px
+  border-radius: 5px
+  border: none
+  overflow: hidden
+  display: flex
+  flex-direction: row
+  align-items: stretch
+  z-index: 5
+  transition: filter 0.2s
+
+
+  @media (min-width: 701px)
+    &:nth-child(even)
+      flex-direction: row-reverse
+
+  @media (max-width: 700px)
+    flex-direction: column
+
+  &:hover, &:focus-within
+    filter: brightness(103%)
+
+.card-image-wrapper
+  flex-basis: 400px
+  position: relative
+  overflow: hidden
+
+  img.attachment-large
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+  @media (max-width: 700px)
+    flex-basis: 300px
+
+
+.card-text-container
+  flex-basis: 500px
+  flex-grow: 1
+  padding: 1rem
+
+  .card-meta
+    color: $text-color-muted
+    opacity: 0.7
+
+  .card-excerpt
+    padding: 1rem
+    max-width: 70ch
+    text-align: center
+
+  @media (max-width: 700px)
+    flex-basis: auto
+
+  .card-title
+    text-align: center
+    margin-bottom: 2rem
+    font-weight: bold
+    color: $text-color
+
+  .card-action
+    text-align: center
+    font-weight: bold
+    font-size: 1.5rem
+    color: $text-color-muted
+    opacity: 0.9
+
+
+.card-link-overlay
+  text-decoration: none
+  position: absolute
+  inset: 0
+  z-index: 2
