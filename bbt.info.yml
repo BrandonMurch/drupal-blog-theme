@@ -1,0 +1,19 @@
+name: "Brandon's Blog Theme"
+type: theme
+core_version_requirement: ^8 || ^9
+description: "A custom theme for my blog website"
+base theme: false
+Core: 9.x
+libraries:
+  - bbt/global-styling-and-scripts
+regions:
+  header: Header
+  primary_menu: "Primary menu"
+  footer_menu: "Secondary menu"
+  page_top: "Page top"
+  page_bottom: "Page bottom"
+  highlighted: Highlighted
+  featured_top: "Featured top"
+  breadcrumb: Breadcrumb
+  content: "Content"
+  footer: "Footer"
