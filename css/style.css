@@ -485,6 +485,7 @@ header {
   z-index: 1;
   min-height: 50px;
   display: flex;
+  justify-content: space-between;
 }
 
 header .svg-border {
