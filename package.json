@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": "localhost",
   "description": "A custom theme for drupal blog",
-  "main": "index.js",
+  "main": "js/app.js",
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.27.7",
