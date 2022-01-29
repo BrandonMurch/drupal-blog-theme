@@ -1,9 +1,9 @@
 global-styling-and-scripts:
   css:
     theme:
-      css/style.css: {}
+      dist/style.css: {}
   dependencies:
     - core/jquery
     - core/jquery.ui.effects.core
   js:
-    js/custom.js: {}
+    dist/app.js: {}
