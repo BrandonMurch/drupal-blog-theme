@@ -1,0 +1,40 @@
+<article class="card" {{ attributes }}>
+      <div class="card-image-wrapper">
+          {{ content.field_image }}
+      </div>
+
+
+      <div class="card-text-container">
+        {{ title_prefix }}
+        {% if label and not page %}
+          <h2 class="card-title" {{ title_attributes }}> {{ label }}  </h2>
+        {% endif %}
+        {{ title_suffix }}
+
+        <div class="row card-meta">
+          <div class="col text-center">
+            <p>Written by <br>
+              <strong> {{ author_name }} </strong>
+            </p>
+            <p>
+          </div>
+
+          <div class="col text-center">
+            <p> Created on <br> <strong> {{ date }}</strong> </p>
+          </div>
+        </div>
+
+
+        <p class="card-excerpt">
+          {{ content.body }}
+        </p>
+
+      <!-- allow link to span the entire card, only display text within the link for accessibilty readers -->
+      <h2 class="card-action" aria-hidden>Click to read more</h2>
+
+      <a href="{{ url }}" class="card-link-overlay">
+        <p class="hidden">Click to read more</p>
+      </a>
+
+    </div>
+</article>
