@@ -1,0 +1,16 @@
+{%
+  set title_classes = [
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+{% if label_hidden == false %}
+  <h1{{ title_attributes.addClass(title_classes) }}>{{ label }}</h1>
+{% endif %}
+
+
+<ul {{ attributes.addClass("tag-list") }}>
+  {% for item in items %}
+    <li {{ item.attributes.addClass("tag") }}>{{ item.content }}</li>
+  {% endfor %}
+</ul>
