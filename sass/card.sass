@@ -1,26 +1,25 @@
 .card
   background-color: $background-color
-  margin: 1rem auto
+  margin: 40px auto
   box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px
   border-radius: 5px
   border: none
   overflow: hidden
   display: flex
-  flex-direction: row
   align-items: stretch
-  z-index: 5
   transition: filter 0.2s
 
-
-  @media (min-width: 701px)
-    &:nth-child(even)
-      flex-direction: row-reverse
-
-  @media (max-width: 700px)
-    flex-direction: column
-
-  &:hover, &:focus-within
+  &:hover,
+  &:focus-within
     filter: brightness(103%)
+
+@media (min-width: 701px)
+  .views-row:nth-child(even) .card
+    flex-direction: row-reverse
+
+@media (max-width: 700px)
+  .card
+    flex-direction: column
 
 .card-image-wrapper
   flex-basis: 400px
