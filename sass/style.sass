@@ -13,6 +13,7 @@
 @import header
 @import footer
 @import nav
+@import page
 
 html
   overflow-x: hidden
@@ -36,7 +37,9 @@ body
   flex-direction: column
 
   .main
+    // ensure body, at least, fills the screen, so the footer will be at the bottom of the page.
     flex-grow: 1
+
 
 p
   line-height: 1.6
