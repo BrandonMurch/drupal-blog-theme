@@ -1,0 +1,14 @@
+<div class="article">
+  {{ content.field_image }}
+
+  {{ content.body }}
+
+  <h1 class="text-center subtitle">Share this article: </h1>
+  {% include directory ~ '/templates/parts/social.html.twig' %}
+
+  <h1 class="text-center subtitle">Read more about:</h1>
+  {{ content.field_tags }}
+</div>
+
+
+{# TODO: add comments? #}
