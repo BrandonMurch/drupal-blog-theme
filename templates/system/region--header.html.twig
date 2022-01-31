@@ -1,10 +1,6 @@
 {% if content %}
     <header aria-label="Site header" class="header" id="header" role="banner">
          {{ content }}
-         {% if isArticle %}
-            {% include '@bbt/parts/article--meta.html.twig' with [node, author]%}
-         {% endif %}
-
          {% include '@bbt/parts/svg-border.html.twig' %}
     </header>
 {% endif %}

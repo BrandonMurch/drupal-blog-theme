@@ -1,5 +1,11 @@
 # Optional Setup Instructions
 
+## Nodes
+
+### Title Placement
+
+The default placement for the 'Page title' block in this theme is in the header. However, it will still work in other locations.
+
 ## Users
 
 ### Support for custom user websites.
