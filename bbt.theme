@@ -5,6 +5,18 @@ use \Drupal\user\Entity\User;
 use \Drupal\user\UserInterface;
 
 
+
+function bbt_preprocess_node(&$variables) {
+  // dvr($variables);
+  $request = \Drupal::request();
+    if ($route = $request->attributes->get(\Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_OBJECT)) {
+      $title = \Drupal::service('title_resolver')->getTitle($request, $route);
+      $variables['title'] = $title;
+      $variables['title_for_url'] = urlencode($title);
+    }
+}
+
+
 function add_article_meta(&$variables) {
     $node = \Drupal::routeMatch()->getParameter('node');
     $variables['isArticle'] = $node instanceof NodeInterface && $node->bundle() == 'article';
@@ -29,6 +41,8 @@ function bbt_preprocess_block(&$variables) {
     add_article_meta($variables);
   }
 }
+
+
 
 
 // https://drupal.stackexchange.com/questions/219051/theme-suggestion-for-overridding-page-title-html-twig-file

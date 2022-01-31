@@ -1,3 +1,5 @@
+{% set url = url('<current>') %}
+
 <div class="socials">
 
   <!-- Facebook -->
@@ -13,7 +15,7 @@
   </a>
 
   <!-- Twitter -->
-  <a class="sharing-button-link" href="https://twitter.com/intent/tweet/?text={{ title }}&amp;url={{ url }}" target="_blank" rel="noopener" aria-label="">
+  <a class="sharing-button-link" href="https://twitter.com/intent/tweet/?text={{ title_for_url }}&amp;url={{ url }}" target="_blank" rel="noopener" aria-label="">
     <div class="sharing-button twitter">
       <div aria-hidden="true" class="sharing-button-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -25,7 +27,7 @@
   </a>
 
   <!-- Tumblr -->
-  <a class="sharing-button-link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title={{ title }}&amp;caption={{ title }}&amp;content={{ url }}&amp;canonicalUrl={{ url }}&amp;shareSource=tumblr_share_button" target="_blank" rel="noopener" aria-label="">
+  <a class="sharing-button-link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title={{ title_for_url }}&amp;caption={{ title_for_url }}&amp;content={{ url }}&amp;canonicalUrl={{ url }}&amp;shareSource=tumblr_share_button" target="_blank" rel="noopener" aria-label="">
     <div class="sharing-button tumblr">
       <div aria-hidden="true" class="sharing-button-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -37,7 +39,7 @@
   </a>
 
   <!-- E-Mail -->
-  <a class="sharing-button-link" href="mailto:?subject={{ title }}&amp;body={{ url }}" target="_self" rel="noopener" aria-label="">
+  <a class="sharing-button-link" href="mailto:?subject={{ title_for_url }}&amp;body={{ url }}" target="_self" rel="noopener" aria-label="">
     <div class="sharing-button email">
       <div aria-hidden="true" class="sharing-button-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -49,7 +51,7 @@
   </a>
 
   <!-- Pinterest -->
-  <a class="sharing-button-link" href="https://pinterest.com/pin/create/button/?url={{ url }}&amp;media={{ url }}&amp;description={{ title }}" target="_blank" rel="noopener" aria-label="">
+  <a class="sharing-button-link" href="https://pinterest.com/pin/create/button/?url={{ url }}&amp;media={{ url }}&amp;description={{ title_for_url }}" target="_blank" rel="noopener" aria-label="">
     <div class="sharing-button pinterest">
       <div aria-hidden="true" class="sharing-button-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -61,7 +63,7 @@
   </a>
 
   <!-- LinkedIn -->
-  <a class="sharing-button-link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ url }}&amp;title={{ title }}&amp;summary={{ title }}&amp;source={{ url }}" target="_blank" rel="noopener" aria-label="">
+  <a class="sharing-button-link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ url }}&amp;title={{ title_for_url }}&amp;summary={{ title_for_url }}&amp;source={{ url }}" target="_blank" rel="noopener" aria-label="">
     <div class="sharing-button linkedin">
       <div aria-hidden="true" class="sharing-button-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
