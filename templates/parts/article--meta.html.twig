@@ -1,0 +1,34 @@
+<div class="article-header">
+  <h1 class="display-3 article-title">
+    {{ node.title }}
+  </h1>
+
+  <div class="article-meta-container">
+    <div class="article-author">
+
+      {% if author.avatar %}
+        <img class="article-avatar" src="{{ file_url(author.avatar) }}" alt="{{ author_name }}">
+      {% endif %}
+
+      <p class="article-author-text">
+        Written by
+        <br>
+        {# TODO: Add author url. #}
+          <strong>
+            {{ author.name }}
+          </strong>
+        {# </a> #}
+      </p>
+    </div>
+
+    <div class="article-date-container">
+      <p class="article-date">Created on
+        <br>
+        <strong>{{ node.created }}</strong>
+
+        {# TODO: Add modified date #}
+
+      </div>
+
+    </div>
+  </div>

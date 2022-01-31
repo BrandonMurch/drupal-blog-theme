@@ -1,0 +1,24 @@
+<?php
+
+use \Drupal\user\Entity\User;
+use \Drupal\node\NodeInterface;
+
+function bbt_preprocess_region(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $variables['isNode'] = $node instanceof NodeInterface;
+  if ($variables['isNode']) {
+    $variables['node']['title'] = $node->title->value;
+
+    $fd = \Drupal::service('date.formatter')->format($node->created->value, 'custom', 'F d, Y');
+
+    $variables['node']['created'] = $fd;
+    $variables['author']['uid'] = $node->getOwnerId();
+    $variables['author']['url'] = "/user/" . $variables['uid'];
+    $user = User::load($variables['author']['uid']);
+    $variables['author']['name'] = $user->getDisplayName();
+    $variables['author']['avatar'] = $user->get('user_picture')->entity->uri->value;
+  }
+
+  // dpr($user->get('user_picture')->entity);
+
+}
