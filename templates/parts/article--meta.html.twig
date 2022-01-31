@@ -7,17 +7,24 @@
     <div class="article-author">
 
       {% if author.avatar %}
-        <img class="article-avatar" src="{{ file_url(author.avatar) }}" alt="{{ author_name }}">
+        <img class="article-avatar" src="{{ file_url(author.avatar) }}" alt="{{ author.name }}'s avatar'">
       {% endif %}
 
       <p class="article-author-text">
         Written by
         <br>
-        {# TODO: Add author url. #}
+        {% if author.website %}
+          <a href="{{author.website}}">
+        {% endif %}
+
         <strong>
           {{ author.name }}
         </strong>
-        {# </a> #}
+        {% if author.website %}
+
+          </a>
+        {% endif %}
+
       </p>
     </div>
 
