@@ -1,7 +1,7 @@
 {% if content %}
     <header aria-label="Site header" class="header" id="header" role="banner">
          {{ content }}
-         {% if isNode %}
+         {% if isArticle %}
             {% include '@bbt/parts/article--meta.html.twig' with [node, author]%}
          {% endif %}
 

@@ -5,20 +5,16 @@ use \Drupal\node\NodeInterface;
 
 function bbt_preprocess_region(&$variables) {
   $node = \Drupal::routeMatch()->getParameter('node');
-  $variables['isNode'] = $node instanceof NodeInterface;
-  if ($variables['isNode']) {
+  $variables['isArticle'] = $node instanceof NodeInterface && $node->bundle() == 'article';
+  if ($variables['isArticle']) {
     $variables['node']['title'] = $node->title->value;
-
-    $fd = \Drupal::service('date.formatter')->format($node->created->value, 'custom', 'F d, Y');
-
-    $variables['node']['created'] = $fd;
-    $variables['author']['uid'] = $node->getOwnerId();
-    $variables['author']['url'] = "/user/" . $variables['uid'];
-    $user = User::load($variables['author']['uid']);
+    $variables['node']['created'] = \Drupal::service('date.formatter')->format($node->created->value, 'custom', 'F d, Y');
+    $variables['node']['updated'] = \Drupal::service('date.formatter')->format($node->revision_timestamp->value, 'custom', 'F d, Y');
+    $variables['author']['url'] = "/user/" . $node->getOwnerId();
+    $user = $node->getOwner();
     $variables['author']['name'] = $user->getDisplayName();
-    $variables['author']['avatar'] = $user->get('user_picture')->entity->uri->value;
+    if ($user->get('user_picture')) {
+      $variables['author']['avatar'] = $user->get('user_picture')->entity->uri->value;
+    }
   }
-
-  // dpr($user->get('user_picture')->entity);
-
 }

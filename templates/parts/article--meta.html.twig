@@ -14,9 +14,9 @@
         Written by
         <br>
         {# TODO: Add author url. #}
-          <strong>
-            {{ author.name }}
-          </strong>
+        <strong>
+          {{ author.name }}
+        </strong>
         {# </a> #}
       </p>
     </div>
@@ -25,10 +25,13 @@
       <p class="article-date">Created on
         <br>
         <strong>{{ node.created }}</strong>
-
-        {# TODO: Add modified date #}
-
-      </div>
-
+      </p>
+      <p class="article-date">Last updated
+        <br>
+        <strong>
+          {{node.updated}}</strong>
+      </p>
     </div>
+
   </div>
+</div>
