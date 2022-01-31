@@ -1,15 +1,26 @@
-header
+.upper-header,
+.lower-header
+  width: 100%
+  display: flex
+  min-height: 50px
+  align-items: center
   position: relative
+
+.upper-header
+  justify-content: space-between
+
+.lower-header
+  justify-content: center
+
+header
   margin-bottom: 7vw
   padding: 30px 20px
   padding-bottom: 50px
   background-image: linear-gradient(to bottom right, var(--accent1) -10%, var(--accent2) 100%)
   transition: all 1s ease-in-out
   z-index: 1
-  min-height: 50px
-  display: flex
-  justify-content: space-between
-  align-items: center
+  position: relative
+  
 
 header .svg-border
   fill: $background-color

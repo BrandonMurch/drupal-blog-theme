@@ -4,7 +4,7 @@
 
 ### Title Placement
 
-The default placement for the 'Page title' block in this theme is in the header. However, it will still work in other locations.
+The default placement for the 'Page title' block in this theme is in the "Lower Header" region. However, it will still work in other locations.
 
 ## Users
 

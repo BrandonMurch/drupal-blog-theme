@@ -7,9 +7,8 @@ Core: 9.x
 libraries:
   - bbt/global-styling-and-scripts
 regions:
-  header: Header
-  primary_menu: "Primary menu"
-  footer_menu: "Secondary menu"
+  upper_header: Upper Header
+  lower_header: Lower Header
   page_top: "Page top"
   page_bottom: "Page bottom"
   highlighted: Highlighted

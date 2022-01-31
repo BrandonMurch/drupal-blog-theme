@@ -1,6 +1,6 @@
 <div class="main-container">
 
-  {{ page.header }}
+{% include '@bbt/parts/header.html.twig' with [page] %}
 
   <section class="featured" id="featured" role="complementary">
      {{ page.featured_top }}
