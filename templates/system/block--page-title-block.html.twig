@@ -1,42 +1,53 @@
-<div class="article-header">
-    {{ content }}
 
-  <div class="article-meta-container">
-    <div class="article-author">
+{% if isArticle %}
+  <div class="article-header">
+      {{ content }}
 
-      {% if author.avatar %}
-        <img class="article-avatar" src="{{ file_url(author.avatar) }}" alt="{{ author.name }}'s avatar'">
-      {% endif %}
+    <div class="article-meta-container">
+      <div class="article-author">
 
-      <p class="article-author-text">
-        Written by
-        <br>
-        {% if author.website %}
-          <a href="{{author.website}}">
+        {% if author.avatar %}
+          <img class="article-avatar" src="{{ file_url(author.avatar) }}" alt="{{ author.name }}'s avatar'">
         {% endif %}
 
-        <strong>
-          {{ author.name }}
-        </strong>
-        {% if author.website %}
+        {% if author.name %}
 
-          </a>
+          <p class="article-author-text">
+            Written by
+            <br>
+            {% if author.website %}
+              <a href="{{author.website}}">
+            {% endif %}
+
+            <strong>
+              {{ author.name }}
+            </strong>
+            {% if author.website %}
+
+              </a>
+            {% endif %}
+
+          </p>
         {% endif %}
+      </div>
 
-      </p>
+      <div class="article-date-container">
+        {% if node.created %}
+
+          <p class="article-date">Created on
+            <br>
+            <strong>{{ node.created }}</strong>
+          </p>
+        {% endif %}
+        {% if node.updated %}
+          <p class="article-date">Last updated
+            <br>
+            <strong>
+              {{node.updated}}</strong>
+          </p>
+        {% endif %}
+      </div>
+
     </div>
-
-    <div class="article-date-container">
-      <p class="article-date">Created on
-        <br>
-        <strong>{{ node.created }}</strong>
-      </p>
-      <p class="article-date">Last updated
-        <br>
-        <strong>
-          {{node.updated}}</strong>
-      </p>
-    </div>
-
   </div>
-</div>
+{% endif %}

@@ -1,10 +1,6 @@
 <header aria-label="Site header" class="header" id="header" role="banner">
-    <div class="upper-header">
-      {{ page.upper_header}}
-    </div>
-    <div class="lower-header">
-      {{ page.lower_header}}
-    </div>
+    {{ page.upper_header}}
+    {{ page.lower_header}}
 
     {% include '@bbt/parts/svg-border.html.twig' %}
 </header>
