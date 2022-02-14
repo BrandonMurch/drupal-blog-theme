@@ -1,7 +1,6 @@
-
 {% if isArticle %}
   <div class="article-header">
-      {{ content }}
+    {{ content }}
 
     <div class="article-meta-container">
       <div class="article-author">
@@ -16,13 +15,13 @@
             Written by
             <br>
             {% if author.website %}
-              <a href="{{author.website}}">
-            {% endif %}
+              <a class="article-author-link" href="{{author.website}}">
+              {% endif %}
 
-            <strong>
-              {{ author.name }}
-            </strong>
-            {% if author.website %}
+              <strong>
+                {{ author.name }}
+              </strong>
+              {% if author.website %}
 
               </a>
             {% endif %}
@@ -31,22 +30,24 @@
         {% endif %}
       </div>
 
-      <div class="article-date-container">
-        {% if node.created %}
-
+      {% if node.created %}
+        <div class="article-created-container">
           <p class="article-date">Created on
             <br>
             <strong>{{ node.created }}</strong>
           </p>
-        {% endif %}
-        {% if node.updated %}
+        </div>
+      {% endif %}
+
+      {% if node.updated %}
+        <div class="article-updated-container">
           <p class="article-date">Last updated
             <br>
             <strong>
               {{node.updated}}</strong>
           </p>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
 
     </div>
   </div>
