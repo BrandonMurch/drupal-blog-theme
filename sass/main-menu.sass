@@ -128,6 +128,15 @@
       position: relative
       margin: 0
 
+      .sub-menu li
+        font-size: 20px
+        // padding: 0
+        margin: 5px 0
+
+      &:focus,
+      &:hover
+        padding: 20px 0
+
       // Lines on top and below active submenu
       &:focus::before,
       &:focus::after
@@ -143,10 +152,7 @@
       &:focus::after
         bottom: 0
 
-      .sub-menu li
-        font-size: 20px
-        padding: 0
-        margin: 5px 0
+
 
   /* Menu Toggle - "Hamburger Icon" ===============================================================
   .menu-toggle
