@@ -1,0 +1,55 @@
+.form-text
+  background-color: rgba(255,255,255,0.5)
+  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px
+  width: 90%
+  max-width: 300px
+  margin: 20px
+  padding: 10px
+  align-self: center
+  border-radius: 5px
+  outline: none
+  border: none
+
+  &:focus
+    outline: 2px solid var(--accent1)
+    background-color: rgba(255,255,255,0.8)
+
+
+  label.form-required
+    font-family: Montserrat
+    font-weight: 500
+
+
+.form-submit
+  +primary-button
+
+  min-width: 150px
+  min-height: 50px
+  margin: 30px
+
+
+.user-login-form
+  display: flex
+  flex-direction: column
+  align-items: center
+  background-color: transparent
+  border-radius: 20px
+  padding: 20px
+  max-width: 350px
+  margin: auto
+
+.form-item-name,
+.form-item-pass
+
+  display: flex
+  flex-direction: column
+
+  label
+    font-family: Montserrat
+    color: $text-color
+    font-weight: 500
+    display: inline-block
+    width: 100%
+
+  .description
+    display: none
