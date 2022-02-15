@@ -38,7 +38,7 @@
     {% endif %}
     {% for item in items %}
       {% set sub_menu_class = item.below ? "menu-item-has-children" : "" %}
-      <li{{ item.attributes.addClass(["menu-item", sub_menu_class]) }} tabindex="-1">
+      <li{{ item.attributes.addClass(["menu-item", sub_menu_class]) }} tabindex="1">
         {{ link(item.title, item.url) }}
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
