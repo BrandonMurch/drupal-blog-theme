@@ -1,4 +1,4 @@
-<article class="card" {{ attributes }}>
+<article {{ attributes.addClass("card") }}>
       <div class="card-image-wrapper">
           {{ content.field_image }}
       </div>
@@ -32,7 +32,7 @@
       <!-- allow link to span the entire card, only display text within the link for accessibilty readers -->
       <h2 class="card-action" aria-hidden>Click to read more</h2>
 
-      <a href="{{ url }}" class="card-link-overlay">
+      <a href="{{ url }}" class="card-link-overlay" tabIndex="1">
         <p class="hidden">Click to read more</p>
       </a>
 

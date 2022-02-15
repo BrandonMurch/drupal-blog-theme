@@ -9,9 +9,10 @@
   align-items: stretch
   transition: filter 0.2s
 
-  &:hover,
   &:focus-within
-    filter: brightness(103%)
+    outline: 2px solid var(--accent1)
+
+
 
 @media (min-width: 701px)
   .views-row:nth-child(even) .card
@@ -72,3 +73,9 @@
   position: absolute
   inset: 0
   z-index: 2
+
+  &:hover,
+  &:focus-within
+    background-color: rgba(0,0,0,0.02)
+
+
