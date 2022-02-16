@@ -8,6 +8,7 @@
   display: flex
   align-items: stretch
   transition: filter 0.2s
+  max-height: 480px
 
   &:focus-within
     outline: 2px solid var(--accent1)
@@ -48,10 +49,18 @@
     display: flex
     justify-content: space-evenly
 
+  .card-author,
+  .card-created
+    text-align: center
+
   .card-excerpt
-    padding: 1rem
     max-width: 70ch
     text-align: center
+    display: -webkit-box
+    -webkit-line-clamp: 5
+    -webkit-box-orient: vertical
+    overflow: hidden
+
 
   @media (max-width: 700px)
     flex-basis: auto

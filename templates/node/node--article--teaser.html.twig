@@ -11,22 +11,22 @@
         {% endif %}
         {{ title_suffix }}
 
-        <div class="row card-meta">
-          <div class="col text-center">
+        <div class="card-meta">
+          <div class="card-author">
             <p>Written by <br>
               <strong> {{ author_name }} </strong>
             </p>
             <p>
           </div>
 
-          <div class="col text-center">
+          <div class="card-created">
             <p> Created on <br> <strong> {{ date }}</strong> </p>
           </div>
         </div>
 
 
         <div class="card-excerpt">
-        {{ content.body }}
+          {{ content.body }}
         </div>
 
       <!-- allow link to span the entire card, only display text within the link for accessibilty readers -->
