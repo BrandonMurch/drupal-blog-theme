@@ -1,9 +1,7 @@
 export const keyboardAccessibility = () => {
-  jQuery(window).load(() => {
-    jQuery(window).on("keydown", (e) => {
+    window.addEventListener("keydown", (e) => {
       if (e.key == "Enter") {
         document.activeElement.click();
       }
     });
-  });
 };
