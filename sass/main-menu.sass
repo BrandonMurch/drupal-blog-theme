@@ -33,6 +33,7 @@
   .menu-item-has-children
     transition: all 0.5s ease-in-out
     width: 100%
+    margin-right: 20px
 
     .sub-menu
       +clear-style
@@ -91,6 +92,17 @@
 
   .main-menu-container
     margin-top: 20px
+
+  li.menu-item.menu-item-has-children > span::after
+    top: 10px
+
+  .sub-menu-open,
+  .menu-item-has-children:hover
+    & > span::after
+      top: 0px !important
+
+
+
 
 
 // Mobile Dropdown =============================================================
