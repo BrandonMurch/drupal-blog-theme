@@ -1,16 +1,16 @@
 <div class="article">
 
-  {{ content.field_image }}
+	{{ content.field_image }}
 
-  {{ content.body }}
+	{{ content.body }}
 
 
-  <h1 class="text-center subtitle">Share this article: </h1>
-  {% include '@bbt/parts/social.html.twig' with [title_for_url] %}
+	<h1 class="text-center subtitle">Share this article:
+	</h1>
+	{% include '@bbt/parts/social.html.twig' with [title_for_url] %}
 
-  <h1 class="text-center subtitle">Read more about:</h1>
-  {{ content.field_tags }}
+	<h1 class="text-center subtitle">Read more about:</h1>
+	{{ content.field_tags }}
 </div>
 
-
-{# TODO: add comments? #}
+{{ content.comment }}

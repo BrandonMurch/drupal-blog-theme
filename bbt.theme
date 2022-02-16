@@ -1,56 +1,88 @@
 <?php
 
-use \Drupal\node\NodeInterface;
-use \Drupal\user\Entity\User;
-use \Drupal\user\UserInterface;
+/**
+ * @file
+ * Preprocessors for BBT Theme.
+ */
 
+use Drupal\Core\File\FileUrlGenerator;
+use Drupal\node\NodeInterface;
+use Drupal\user\UserInterface;
+use Drupal\user\Entity\User;
+use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 
-
+/**
+ * Add additional information into nodes.
+ *
+ * Add title, and url.
+ */
 function bbt_preprocess_node(&$variables) {
-  // dvr($variables);
   $request = \Drupal::request();
-    if ($route = $request->attributes->get(\Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_OBJECT)) {
-      $title = \Drupal::service('title_resolver')->getTitle($request, $route);
-      $variables['title'] = $title;
-      $variables['title_for_url'] = urlencode($title);
-    }
+  if ($route = $request->attributes->get(RouteObjectInterface::ROUTE_OBJECT)) {
+    $title = \Drupal::service('title_resolver')->getTitle($request, $route);
+    $variables['title'] = $title;
+    $variables['title_for_url'] = urlencode($title);
+  }
 }
 
-
+/**
+ * Inject article meta data into variables.
+ */
 function add_article_meta(&$variables) {
-    $node = \Drupal::routeMatch()->getParameter('node');
-    $variables['isArticle'] = $node instanceof NodeInterface && $node->bundle() == 'article';
-    if ($variables['isArticle']) {
-      $variables['node']['title'] = $node->title->value;
-      $variables['node']['created'] = \Drupal::service('date.formatter')->format($node->created->value, 'custom', 'F d, Y');
-      $variables['node']['updated'] = \Drupal::service('date.formatter')->format($node->revision_timestamp->value, 'custom', 'F d, Y');
-      $user = $node->getOwner();
-      if ($user instanceof UserInterface){
-        $variables['author']['url'] = "/user/" . $node->getOwnerId();
-        $variables['author']['name'] = $user->getDisplayName();
-        $variables['author']['website'] = $user->field_website->value;
-        if ($user->user_picture->entity) {
-          $variables['author']['avatar'] = $user->get('user_picture')->entity->uri->value;
-        }
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $variables['isArticle'] = $node instanceof NodeInterface && $node->bundle() == 'article';
+  if ($variables['isArticle']) {
+    $variables['node']['title'] = $node->title->value;
+    $variables['node']['created'] = \Drupal::service('date.formatter')->format($node->created->value, 'custom', 'F d, Y');
+    $variables['node']['updated'] = \Drupal::service('date.formatter')->format($node->revision_timestamp->value, 'custom', 'F d, Y');
+    $user = $node->getOwner();
+    if ($user instanceof UserInterface) {
+      $variables['author']['url'] = "/user/" . $node->getOwnerId();
+      $variables['author']['name'] = $user->getDisplayName();
+      $variables['author']['website'] = $user->field_website->value;
+      if ($user->user_picture->entity) {
+        $variables['author']['avatar'] = $user->get('user_picture')->entity->uri->value;
       }
     }
+  }
 }
 
+/**
+ * If an article, add additional meta information.
+ */
 function bbt_preprocess_block(&$variables) {
   if ($variables['attributes']['id'] == 'block-bbt-page-title') {
     add_article_meta($variables);
   }
 }
 
+/**
+ * Add extra fields to comments
+ *
+ * Format datetime for comments.
+ * Add uri of author avatar and other author information.
+ */
+function bbt_preprocess_comment(&$variables) {
+  $date = strtotime($variables['created'][1]['#metadata'][0]['content']);
+  $variables['created'] = \Drupal::service('date.formatter')
+  ->formatInterval(\Drupal::time()->getRequestTime() - $date);
 
+  $user = User::load($variables['author_id']);
+  $variables['author']['name'] = $user->getDisplayName();
+  $variables['author']['website'] = $user->field_website->value;
+  $user_picture = $user->get('user_picture')->entity;
+  if ($user_picture) {
+    $variables['author']['avatar'] = \Drupal::service('file_url_generator')->generate($user_picture->uri->value);
+  }
 
+}
 
-// https://drupal.stackexchange.com/questions/219051/theme-suggestion-for-overridding-page-title-html-twig-file
-// Add content type suggestions, e.g. page--node--article.html.twig.
+/**
+ * Https://drupal.stackexchange.com/questions/219051/theme-suggestion-for-overridding-page-title-html-twig-file
+ * Add content type suggestions, e.g. page--node--article.html.twig.
+ */
 function bbt_theme_suggestions_page_title_alter(array &$suggestions, array $variables) {
-  // Are we looking at a node?
   $node = \Drupal::routeMatch()->getParameter('node');
-  // Object check required, sometimes it's a string, yes, really. Who knew?
   if (!empty($node) && is_object($node)) {
     array_splice($suggestions, 1, 0, 'page_title__' . $node->getType());
   }
