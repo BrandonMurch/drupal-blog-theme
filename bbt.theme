@@ -87,3 +87,10 @@ function bbt_theme_suggestions_page_title_alter(array &$suggestions, array $vari
     array_splice($suggestions, 1, 0, 'page_title__' . $node->getType());
   }
 }
+
+
+function bbt_preprocess_html(&$variables) {
+  $variables['accent1'] = theme_get_setting('accent_color1');
+  $variables['accent2'] = theme_get_setting('accent_color2');
+
+}

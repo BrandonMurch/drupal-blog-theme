@@ -11,3 +11,8 @@ A custom drupal theme created for my personal blog. Focusing on readability and 
 -   PHP
 -   Sass
 -   Webpack
+
+
+### Custom Features:
+
+- Allow administrators to change the colour scheme of the theme.
