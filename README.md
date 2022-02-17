@@ -39,6 +39,20 @@ The default placement for the 'Page Title' block in this theme is in the "Lower 
 
 ### Users
 
+#### Place user navigation in main menu
+
+The user menu can be a standalone block. It takes care of providing links to the users profile as well as ability to login/logout. The preffered placement of these options for this theme is within the main navigation. To accomplish this:
+
+1. If you want to group all actions within a submenu:
+  1. Go to `/admin/structure/menu/manage/main`
+  1. Click "add link"
+  1. Title = User
+  1. Link = &lt;nolink&gt;
+  1. Click save.
+1. Go to `/admin/structure/menu/manage/account`.
+1. Click on edit for each link.
+  1. Set parent link to either Main Navigation or the empty link you created in step 1. (Alternatively, it can be placed in another menu, like the footer using similar steps.)
+
 #### Support for custom user websites:
 
 In articles, it is possible for the author's name to also be a link to their site. To use this feature:
