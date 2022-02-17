@@ -1,5 +1,6 @@
 .form-text,
-.text-full
+.text-full,
+.form-email
   background-color: rgba(255,255,255,0.5)
   box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px
   width: 90%
@@ -23,6 +24,10 @@
     font-weight: 500
 
 
+.description
+  color: $text-color-muted
+  text-align: center
+
 .form-submit
   +primary-button
 
@@ -43,7 +48,6 @@
 
 .form-item-name,
 .form-item-pass
-
   display: flex
   flex-direction: column
 
@@ -61,3 +65,45 @@
 .form-actions
   display: flex
   width: 100%
+
+
+.user-register-form
+  .form-item
+    margin:30px 10px
+
+  label
+    font-weight: 500
+    font-size: 1.1rem
+
+
+.form-managed-file
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  & > *
+    margin-bottom: 10px
+
+
+  @media screen and (max-width:550px)
+    flex-direction: column
+
+
+
+  img
+    margin-right: 10px
+  .form-submit
+    background-image: none
+    background-color: darkred
+    max-width: 200px
+
+
+.form-file
+  // display: none
+
+.js-form-type-managed-file
+  position: relative
+
+  .description
+    margin-top: 10px
+
