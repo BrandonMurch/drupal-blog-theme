@@ -8,6 +8,7 @@
 use Drupal\node\NodeInterface;
 use Drupal\user\UserInterface;
 use Drupal\user\Entity\User;
+use Drupal\node\Entity\Node;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 
 /**
@@ -56,7 +57,7 @@ function bbt_preprocess_block(&$variables) {
 }
 
 /**
- * Add extra fields to comments
+ * Add extra fields to comments.
  *
  * Format datetime for comments.
  * Add uri of author avatar and other author information.
@@ -64,7 +65,7 @@ function bbt_preprocess_block(&$variables) {
 function bbt_preprocess_comment(&$variables) {
   $date = strtotime($variables['created'][1]['#metadata'][0]['content']);
   $variables['created'] = \Drupal::service('date.formatter')
-  ->formatInterval(\Drupal::time()->getRequestTime() - $date);
+    ->formatInterval(\Drupal::time()->getRequestTime() - $date);
 
   $user = User::load($variables['author_id']);
   $variables['author']['name'] = $user->getDisplayName();
@@ -87,24 +88,33 @@ function bbt_theme_suggestions_page_title_alter(array &$suggestions, array $vari
   }
 }
 
-
+/**
+ * Pass css variables to the html file.
+ */
 function bbt_preprocess_html(&$variables) {
   $variables['accent1'] = theme_get_setting('accent_color1');
   $variables['accent2'] = theme_get_setting('accent_color2');
 
 }
 
-
+/**
+ * Add support for images within search results.
+ */
 function bbt_preprocess_search_result(&$variables) {
   $current_path = \Drupal::service('path.current')->getPath();
   if (str_contains($current_path, "user")) {
-    $user = User::load(preg_match("/\d+$/i", $variables['url']));
+    preg_match("/\d+$/i", $variables['url'], $matches);
+    $user = User::load($matches[0]);
     $user_picture = $user->get('user_picture')->entity;
     if ($user_picture) {
       $variables['author']['avatar'] = \Drupal::service('file_url_generator')->generate($user_picture->uri->value);
     }
   }
+  elseif (str_contains($current_path, "node")) {
+    preg_match("/\d+$/i", $variables['url'], $matches);
 
+    $node = Node::load($matches[0]);
+    $variables['field_image'] = \Drupal::service('file_url_generator')->generate($node->field_image->entity->getFileUri());
 
-
+  }
 }
