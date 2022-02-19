@@ -2,12 +2,15 @@
   <form
     role="search"
     method="get"
-    id="searchform"
+    id="search-block-form"
     class="searchform hide-submit"
-    action="<?php echo home_url("/"); ?>"
+    action="/search/node"
+    accept-charset="UTF-8"
+    data-once="form-updated"
+    >
 
-    <label class="hidden" for="s">Search for:</label>
-    <input type="text" name="s" id="s" class="search-text" value="" required>
+    <label class="hidden" for="keys">Search for:</label>
+    <input type="search" name="keys" id="edit-keys--2" class="search-text" value="" data-drupal-selector="edit-keys" size="15" maxlength="128" required>
     <button type="button" role="presentation" class="search-toggle">
       {% include directory ~ '/templates/icons/icon--search.html.twig' %}
     </button>
