@@ -93,3 +93,18 @@ function bbt_preprocess_html(&$variables) {
   $variables['accent2'] = theme_get_setting('accent_color2');
 
 }
+
+
+function bbt_preprocess_search_result(&$variables) {
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (str_contains($current_path, "user")) {
+    $user = User::load(preg_match("/\d+$/i", $variables['url']));
+    $user_picture = $user->get('user_picture')->entity;
+    if ($user_picture) {
+      $variables['author']['avatar'] = \Drupal::service('file_url_generator')->generate($user_picture->uri->value);
+    }
+  }
+
+
+
+}
