@@ -78,14 +78,7 @@
       height: auto
       width: auto
 
-
-  @media (max-width: 500px)
-    // Move logo out of the way for the search bar when open
-    &:focus-within ~ .logo-container
-      width: 0
-      transition: all 0.2s ease-in-out
-
-@media screen and (min-width: 751px)
+@media screen and (min-width: 1001px)
   // Only add left margin on top level elements
   .main-menu > li
     margin-left: 15px
@@ -106,7 +99,7 @@
 
 
 // Mobile Dropdown =============================================================
-@media screen and (max-width: 750px)
+@media screen and (max-width: 1000px)
   .main-menu-container
     order: 2
     height: 50px
