@@ -2,7 +2,6 @@ const disableHtmlHelpIfNotRestricted = () => {
   const selectedOption = jQuery("#edit-comment-body-0-format--2").children("option:selected").val();
 
   if (selectedOption == "restricted_html") {
-    console.log("SHOW")
     jQuery("#formatter-help").show();
   } else {
     jQuery("#formatter-help").hide();
