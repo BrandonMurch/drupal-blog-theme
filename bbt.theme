@@ -21,7 +21,6 @@ function bbt_preprocess_node(&$variables) {
   if ($route = $request->attributes->get(RouteObjectInterface::ROUTE_OBJECT)) {
     $title = \Drupal::service('title_resolver')->getTitle($request, $route);
     $variables['title'] = $title;
-    $variables['title_for_url'] = urlencode($title);
   }
 }
 

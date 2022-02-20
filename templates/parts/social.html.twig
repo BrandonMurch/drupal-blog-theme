@@ -1,4 +1,6 @@
-{% set url = url('<current>') %}
+{% set url = url('<current>')|render|url_encode %}
+
+{% set title_for_url = title|url_encode %}
 
 <div class="socials">
 
