@@ -32,8 +32,8 @@
   // Handling sub-menu hiding and expansion =====================================
   .menu-item-has-children
     transition: all 0.5s ease-in-out
-    width: 100%
-    margin-right: 20px
+    display: flex
+    flex-direction: column
 
     .sub-menu
       +clear-style
@@ -48,6 +48,7 @@
 
     & > span
       position: relative
+      width: 100%
       margin-right: 15px
 
       // Caret for dropdown toggle
@@ -55,11 +56,11 @@
         content: " "
         border-radius: 2px
         transition: all 0.3s ease-in-out
-        position: absolute
-        right: -30px
-        top: 14px
-        width: 0
+        position: relative
+        left: 10px
+        top: 6px
         height: 0
+        display: inline-block
         border: 9px solid transparent
         border-top-color: $text-color-inverse
 
@@ -69,8 +70,9 @@
     background-color: rgba(255, 255, 255, 0.1)
 
     & > span::after
-      transform: rotate(-180deg)
-      top: 4px
+      top: -4px
+      border-bottom-color: $text-color-inverse
+      border-top-color: transparent
 
     & > .sub-menu
       opacity: 1
@@ -85,18 +87,6 @@
 
   .main-menu-container
     margin-top: 20px
-
-  li.menu-item.menu-item-has-children > span::after
-    top: 10px
-
-  .sub-menu-open,
-  .menu-item-has-children:hover
-    & > span::after
-      top: 0px !important
-
-
-
-
 
 // Mobile Dropdown =============================================================
 @media screen and (max-width: 1000px)
@@ -116,8 +106,8 @@
       left: 0
       margin: 0
       opacity: 0
-      transition: opacity 0.3s 0.3s ease-in-out
       pointer-events: none
+      transition: opacity 0.3s 0.3s ease-in-out
       flex-direction: column
 
     .menu-item
@@ -137,7 +127,6 @@
 
       .sub-menu li
         font-size: 20px
-        // padding: 0
         margin: 5px 0
 
       &:focus,
@@ -158,8 +147,6 @@
 
       &:focus::after
         bottom: 0
-
-
 
   /* Menu Toggle - "Hamburger Icon" ===============================================================
   .menu-toggle
