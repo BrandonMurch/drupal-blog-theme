@@ -11,10 +11,10 @@ import {
   formatterHelp
 } from "./formatter-help";
 
-searchBarHandler();
-menuHandler();
 
 window.onload = () => {
+  menuHandler();
+  searchBarHandler();
   formatterHelp();
   keyboardAccessibility();
 }

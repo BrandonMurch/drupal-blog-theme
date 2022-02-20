@@ -46,7 +46,6 @@ const toggleSubMenu = e => {
 
 // Open the mobile menu and add even listeners for sub menus.
 export const menuHandler = () => {
-  jQuery(window).on("load", () => {
     jQuery(".menu-toggle").on("click", () => {
       jQuery(".main-menu-container").toggleClass("menu-open");
       jQuery("html").toggleClass("no-scroll");
@@ -59,5 +58,4 @@ export const menuHandler = () => {
         document.removeEventListener("keydown", closeSubMenuWithEscape);
       }
     });
-  });
 };
