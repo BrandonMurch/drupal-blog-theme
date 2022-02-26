@@ -1,6 +1,8 @@
 <div class="article">
 
-	{{ content.field_image }}
+	{% if content.field_image %}
+		{{ content.field_image }}
+	{% endif %}
 
 	{{ content.body }}
 
@@ -10,8 +12,10 @@
 
 	{% include '@bbt/parts/social.html.twig' with [title] %}
 
-	<h1 class="text-center subtitle">Read more about:</h1>
-	{{ content.field_tags }}
+{% if (content.field_tags["#items"]|length) > 0 %}
+		<h1 class="text-center subtitle">Read more about:</h1>
+		{{ content.field_tags }}
+	{% endif %}
 </div>
 
 {{ content.comment }}
