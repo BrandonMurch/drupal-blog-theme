@@ -65,3 +65,5 @@ Label: Website
 Machine Name: field_website
 Field Type: Text (plain)
 ```
+
+**Note:** All websites must start with 'http://' or 'https://' to link to an external site.
