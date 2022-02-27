@@ -7,7 +7,7 @@ const closeSubMenuWithEscape = e => {
 const closeChildrenMenu = currentNode => {
   const openItems = jQuery(".sub-menu-open");
   for (let item of openItems) {
-    if (currentNode !== item && currentNode.contains(item)) {
+    if (currentNode !== item && !item.contains(currentNode)) {
       item.classList.remove("sub-menu-open");
     }
   }
@@ -30,12 +30,12 @@ const focusParent = currentNode => {
 const toggleSubMenu = e => {
   const parentLinkItem = e.target.closest(".menu-item-has-children");
   if (parentLinkItem) {
+    closeChildrenMenu(parentLinkItem);
     if (jQuery(parentLinkItem).hasClass("sub-menu-open")) {
       jQuery(parentLinkItem).blur();
 
       focusParent(parentLinkItem);
 
-      closeChildrenMenu(parentLinkItem);
     }
     jQuery(parentLinkItem).toggleClass("sub-menu-open");
   } else {
