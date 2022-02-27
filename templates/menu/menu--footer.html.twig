@@ -33,12 +33,22 @@
   {% if items %}
     {% if menu_level == 0 %}
       <ul{{ attributes.addClass("menu") }}>
+
+      {# Find last child without children to allow specific styling on that element. #}
+      {% set last_item_no_children = null %}
+      {% for item in items %}
+        {% if not(item.below) %}
+          {% set last_item_no_children = item.title %}
+        {% endif %}
+      {% endfor %}
     {% else %}
       <ul class="sub-menu">
     {% endif %}
     {% for item in items %}
+      {% set last_child = item.title == last_item_no_children ? " last-without-children" : "" %}
       {% set sub_menu_class = item.below ? "menu-item-has-children" : "menu-item-no-children" %}
-      <li{{ item.attributes.addClass(["menu-item", sub_menu_class]) }} tabindex="-1">
+
+      <li{{ item.attributes.addClass(["menu-item", sub_menu_class, last_child]) }} tabindex="-1">
         {{ link(item.title, item.url, {'class':['menu-item-title']}) }}
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
